@@ -1,0 +1,110 @@
+export const gitLinks = {
+  AI: {
+    Manish: "https://github.com/Manishiitg/recruitai",
+    Saurabh: "https://github.com/sk2011-ship-it/ai-agent-recruiter",
+    Aayush: "https://github.com/aayush-kumar-codes/AIRecruit",
+    Faisal: "https://github.com/faisal-kazmi-codes/TextTransformerAI",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
+    Atul: "https://github.com/nodeexcel/TalentAI"
+  },
+  Python: {
+    Manish: "https://github.com/Manishiitg/recruitai",
+    Saurabh: "https://github.com/sk2011-ship-it/ai-agent-recruiter",
+    Aayush: "https://github.com/aayush-kumar-codes/Airbnb-Hearth",
+    Faisal: "https://github.com/faisal-kazmi-codes/AutoML-X",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/nestjs-shopify",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
+    Atul: "https://github.com/nodeexcel/Booking-Engine"
+  },
+  Frontend: {
+    Manish: "https://github.com/Manishiitg/recruitai",
+    Saurabh: "https://github.com/sk2011-ship-it/ai-agent-recruiter",
+    Aayush: "https://github.com/aayush-kumar-codes/AIRecruit",
+    Faisal: "https://github.com/faisal-kazmi-codes/TextTransformerAI",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
+    Atul: "https://github.com/nodeexcel/DomainCore"
+  },
+  Fullstack: {
+    Manish: "https://github.com/Manishiitg/recruitai",
+    Saurabh: "https://github.com/sk2011-ship-it/ai-agent-recruiter",
+    Aayush: "https://github.com/aayush-kumar-codes/AditiDataSphere",
+    Faisal: "https://github.com/faisal-kazmi-codes/TextTransformerAI",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
+    Atul: "https://github.com/nodeexcel/BankGraphQL"
+  },
+  Vue: {
+    Manish: "https://github.com/Manishiitg/recruitai",
+    Saurabh: "https://github.com/sk2011-ship-it/ai-agent-recruiter",
+    Aayush: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Faisal: "https://github.com/faisal-kazmi-codes/TextTransformerAI",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
+    Atul: "https://github.com/nodeexcel/AI-Hand-Detection"
+  },
+  React: {
+    Manish: "https://github.com/Manishiitg/recruitai",
+    Saurabh: "https://github.com/sk2011-ship-it/ai-agent-recruiter",
+    Arun: "https://github.com/arun-kumar-codes/travel_yaari",
+    Faisal: "https://github.com/faisal-kazmi-codes/TextTransformerAI",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
+    Atul: "https://github.com/nodeexcel/BankGraphQL"
+  },
+  Shopify: {
+    Manish: "https://github.com/Manishiitg/recruitai",
+    Saurabh: "https://github.com/sk2011-ship-it/ai-agent-recruiter",
+    Arun: "https://github.com/arun-kumar-codes/travel_yaari",
+    Faisal: "https://github.com/faisal-kazmi-codes/TextTransformerAI",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/Ambulance-doctor-service",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
+    Atul: "https://github.com/nodeexcel/BankGraphQL"
+  },
+  Backend: {
+    Manish: "https://github.com/Manishiitg/recruitai",
+    Saurabh: "https://github.com/sk2011-ship-it/ai-agent-recruiter",
+    Aayush: "https://github.com/aayush-kumar-codes/preemo-text-generation",
+    Faisal: "https://github.com/faisal-kazmi-codes/AutoML-X",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/nestjs-shopify",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/BankGraphQL",
+    Atul: "https://github.com/nodeexcel/BankGraphQL"
+  },
+  Devops: {
+    Manish: "https://github.com/aayush-kumar-codes/TerraformOPs",
+    Saurabh: "https://github.com/aayush-kumar-codes/TerraformOPs",
+    Aayush: "https://github.com/aayush-kumar-codes/VPCArchitectureDeploy",
+    Faisal: "https://github.com/faisal-kazmi-codes/TextTransformerAI",
+    Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
+    Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
+    Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
+    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
+    Atul: "https://github.com/nodeexcel/BankGraphQL"
+  }
+};
