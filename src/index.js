@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { slackApp } from "./utils/slack.js";
 import { generateProposal } from "./proposal.js";
+import { startServer, stopServer } from "./server.js";
 
 const normalizeTechnology = (tech) => {
   if (!tech) return tech;
@@ -54,7 +55,31 @@ slackApp.command("/proposal", async ({ ack, respond, command }) => {
   }
 });
 
-(async () => {
-  await slackApp.start();
-  console.log("slack bot running");
-})();
+const main = async () => {
+  try {
+    await Promise.all([
+      slackApp.start(),
+      startServer(process.env.PORT || 3000)
+    ]);
+
+    console.log("slack bot running");
+  } catch (err) {
+    console.error("failed to start services", err);
+    process.exit(1);
+  }
+};
+
+main();
+
+process.on("SIGINT", async () => {
+  console.log("received SIGINT, shutting down http server");
+  await stopServer();
+  process.exit(0);
+});
+
+process.on("SIGTERM", async () => {
+  console.log("received SIGTERM, shutting down http server");
+  await stopServer();
+  process.exit(0);
+});
+
