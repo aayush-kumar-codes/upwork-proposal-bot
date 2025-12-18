@@ -74,6 +74,17 @@ The HTTP API server always runs on the port specified by `PORT` (default: 3000).
 
 The server provides a REST API endpoint for generating proposals.
 
+The bot is smart about **technology** and **client name**:
+
+- **Technology handling**
+  - If you pass a `technology` value, it will be normalized (for example: `ai` → `AI`, `devops` → `Devops`).
+  - If you omit `technology` or pass an unknown value, the bot analyzes the `jobDescription` and tries to detect the most appropriate role:
+    - AI, Python, Frontend, Backend, Fullstack, React, Vue, Shopify, Devops
+  - If it still can’t confidently decide, it falls back to **Fullstack**.
+- **Client name handling**
+  - You can optionally pass `clientName` in the HTTP API body.
+  - If provided, the proposal greeting will use it (for example: `hey John`); otherwise it defaults to `hey there`.
+
 **Endpoint:** `POST /api/proposal`
 
 **Request Body:**
@@ -82,7 +93,8 @@ The server provides a REST API endpoint for generating proposals.
   "name": "Manish",
   "technology": "AI",
   "tone": "professional",
-  "jobDescription": "Need an AI developer to build a chatbot"
+  "jobDescription": "Need an AI developer to build a chatbot",
+  "clientName": "John"
 }
 ```
 
@@ -98,7 +110,7 @@ The server provides a REST API endpoint for generating proposals.
 ```json
 {
   "success": false,
-  "error": "Missing required fields: name, technology, tone, jobDescription"
+  "error": "Missing required fields: name, tone, jobDescription"
 }
 ```
 
@@ -119,22 +131,30 @@ curl -X POST http://localhost:3000/api/proposal \
 If `IS_SLACK_BOT=true`, you can use the `/proposal` command in Slack:
 
 ```
-/proposal <name> <technology> <tone> <job description>
+/proposal <name> [technology] <tone> [clientName] <job description>
 ```
 
 **Parameters:**
 
 - **name**: Person's name (Manish, Aayush, Arun, Saurabh, Faisal, etc.)
-- **technology**: AI, Python, Frontend, Fullstack, Vue, React, Shopify, Backend, Devops
+- **technology** (optional): AI, Python, Frontend, Fullstack, Vue, React, Shopify, Backend, Devops  
+  - If omitted, the bot will infer the role from the job description.
 - **tone**: professional, friendly, casual, etc.
+- **clientName** (optional): The client’s first name; if provided, the greeting will use it.
 - **job description**: The job posting text
 
 **Examples:**
 
 ```
+/proposal Manish AI professional John Need an AI developer to build a chatbot
+
 /proposal Manish AI professional Need an AI developer to build a chatbot
 
+/proposal Aayush Python friendly Sarah Looking for API integration developer
+
 /proposal Aayush Python friendly Looking for API integration developer
+
+/proposal Arun React casual Alex Need React developer for dashboard
 
 /proposal Arun React casual Need React developer for dashboard
 ```
