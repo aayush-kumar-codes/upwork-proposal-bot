@@ -24,48 +24,92 @@ const normalizeTone = (tone) => {
   return tone.toLowerCase();
 };
 
+const isKnownTechnologyWord = (word) => {
+  if (!word) return false;
+  const lower = word.toLowerCase();
+  return [
+    "ai",
+    "python",
+    "frontend",
+    "backend",
+    "fullstack",
+    "react",
+    "vue",
+    "shopify",
+    "devops"
+  ].includes(lower);
+};
+
 if (IS_SLACK_BOT) {
   slackApp.command("/proposal", async ({ ack, respond, command }) => {
     await ack();
 
     try {
       if (!command.text || !command.text.trim()) {
-        await respond("invalid format use /proposal name tech tone [clientName] job");
+        await respond(
+          "invalid format use /proposal name [tech] tone [clientName] job"
+        );
         return;
       }
 
       // Split and filter out empty strings
-      const parts = command.text.trim().split(/\s+/).filter(part => part.length > 0);
-      
-      if (parts.length < 4) {
-        await respond("invalid format use /proposal name tech tone [clientName] job");
+      const parts = command.text
+        .trim()
+        .split(/\s+/)
+        .filter((part) => part.length > 0);
+
+      if (parts.length < 3) {
+        await respond(
+          "invalid format use /proposal name [tech] tone [clientName] job"
+        );
         return;
       }
 
       const rawName = parts[0];
-      const rawTechnology = parts[1];
-      const rawTone = parts[2];
-      
-      // Check if clientName is provided (4th parameter, optional)
-      // If there are 5+ parts, treat 4th as clientName, rest as jobDescription
-      // If there are 4 parts, treat all after tone as jobDescription
+      let rawTechnology = null;
+      let rawTone;
       let rawClientName = null;
       let jobDescription;
-      
-      if (parts.length >= 5) {
-        rawClientName = parts[3];
-        jobDescription = parts.slice(4).join(" ");
+
+      // Determine whether the second argument is a technology or a tone.
+      // If it's a known technology word, treat as technology; otherwise treat as tone.
+      if (isKnownTechnologyWord(parts[1])) {
+        rawTechnology = parts[1];
+        rawTone = parts[2];
+
+        // With explicit technology:
+        // If there are 5+ parts, treat 4th as clientName, rest as jobDescription
+        // If there are 4 parts, treat all after tone as jobDescription
+        if (parts.length >= 5) {
+          rawClientName = parts[3];
+          jobDescription = parts.slice(4).join(" ");
+        } else {
+          jobDescription = parts.slice(3).join(" ");
+        }
       } else {
-        jobDescription = parts.slice(3).join(" ");
+        // No explicit technology – second argument is tone
+        rawTone = parts[1];
+
+        // If there are 4+ parts, treat 3rd as clientName, rest as jobDescription
+        // If there are 3 parts, treat all after tone as jobDescription
+        if (parts.length >= 4) {
+          rawClientName = parts[2];
+          jobDescription = parts.slice(3).join(" ");
+        } else {
+          jobDescription = parts.slice(2).join(" ");
+        }
       }
 
       const name = normalizeName(rawName);
       const technology = normalizeTechnology(rawTechnology);
       const tone = normalizeTone(rawTone);
-      const clientName = rawClientName && rawClientName.trim() ? rawClientName.trim() : null;
+      const clientName =
+        rawClientName && rawClientName.trim() ? rawClientName.trim() : null;
 
-      if (!name || !technology || !tone || !jobDescription) {
-        await respond("invalid format use /proposal name tech tone [clientName] job");
+      if (!name || !tone || !jobDescription) {
+        await respond(
+          "invalid format use /proposal name [tech] tone [clientName] job"
+        );
         return;
       }
 

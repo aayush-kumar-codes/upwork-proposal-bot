@@ -32,10 +32,10 @@ app.post("/api/proposal", async (req, res) => {
     const technology = normalizeTechnology(rawTechnology);
     const tone = normalizeTone(rawTone);
 
-    if (!name || !technology || !tone || !jobDescription) {
+    if (!name || !tone || !jobDescription) {
       return res.status(400).json({
         success: false,
-        error: "Missing required fields: name, technology, tone, jobDescription"
+        error: "Missing required fields: name, tone, jobDescription"
       });
     }
 
