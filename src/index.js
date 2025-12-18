@@ -3,6 +3,8 @@ import { slackApp } from "./utils/slack.js";
 import { generateProposal } from "./proposal.js";
 import { startServer, stopServer } from "./server.js";
 
+const IS_SLACK_BOT = process.env.IS_SLACK_BOT === "true";
+
 const normalizeTechnology = (tech) => {
   if (!tech) return tech;
   const lower = tech.toLowerCase();
@@ -22,47 +24,54 @@ const normalizeTone = (tone) => {
   return tone.toLowerCase();
 };
 
-slackApp.command("/proposal", async ({ ack, respond, command }) => {
-  await ack();
-  
-  try {
-    const parts = command.text.split(" ");
-    const rawName = parts[0];
-    const rawTechnology = parts[1];
-    const rawTone = parts[2];
-    const jobDescription = parts.slice(3).join(" ");
+if (IS_SLACK_BOT) {
+  slackApp.command("/proposal", async ({ ack, respond, command }) => {
+    await ack();
 
-    const name = normalizeName(rawName);
-    const technology = normalizeTechnology(rawTechnology);
-    const tone = normalizeTone(rawTone);
+    try {
+      const parts = command.text.split(" ");
+      const rawName = parts[0];
+      const rawTechnology = parts[1];
+      const rawTone = parts[2];
+      const jobDescription = parts.slice(3).join(" ");
 
-    if (!name || !technology || !tone) {
-      await respond("invalid format use /proposal name tech tone job");
-      return;
+      const name = normalizeName(rawName);
+      const technology = normalizeTechnology(rawTechnology);
+      const tone = normalizeTone(rawTone);
+
+      if (!name || !technology || !tone) {
+        await respond("invalid format use /proposal name tech tone job");
+        return;
+      }
+
+      const proposal = await generateProposal({
+        name,
+        technology,
+        tone,
+        jobDescription
+      });
+
+      await respond(proposal);
+    } catch (err) {
+      console.error(err);
+      await respond("something went wrong");
     }
-
-    const proposal = await generateProposal({
-      name,
-      technology,
-      tone,
-      jobDescription
-    });
-
-    await respond(proposal);
-  } catch (err) {
-    console.error(err);
-    await respond("something went wrong");
-  }
-});
+  });
+}
 
 const main = async () => {
   try {
-    await Promise.all([
-      slackApp.start(),
-      startServer(process.env.PORT || 3000)
-    ]);
+    if (IS_SLACK_BOT) {
+      await Promise.all([
+        slackApp.start(),
+        startServer(process.env.PORT || 3000)
+      ]);
 
-    console.log("slack bot running");
+      console.log("slack bot and http api server running");
+    } else {
+      await startServer(process.env.PORT || 3000);
+      console.log("http api server running (Slack bot disabled)");
+    }
   } catch (err) {
     console.error("failed to start services", err);
     process.exit(1);

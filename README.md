@@ -1,13 +1,13 @@
 # Upwork Proposal Bot
 
-A Slack bot that generates personalized Upwork proposals using AI.
+A bot that generates personalized Upwork proposals using AI. Can run as a Slack bot, HTTP API server, or both.
 
 ## Prerequisites
 
 - Node.js (v18 or higher)
 - npm or yarn
-- Slack workspace with app permissions
 - OpenAI API key
+- (Optional) Slack workspace with app permissions (if using Slack bot mode)
 
 ## Installation
 
@@ -28,13 +28,24 @@ touch .env
 ```
 
 4. Add your environment variables to `.env`:
+
+**For API-only mode:**
+```
+OPENAI_API_KEY=sk-your-openai-api-key
+IS_SLACK_BOT=false
+PORT=3000
+```
+
+**For Slack bot mode (with API):**
 ```
 SLACK_BOT_TOKEN=xoxb-your-bot-token
 SLACK_APP_TOKEN=xapp-your-app-token
 OPENAI_API_KEY=sk-your-openai-api-key
+IS_SLACK_BOT=true
+PORT=3000
 ```
 
-## Getting Slack Tokens
+## Getting Slack Tokens (Optional - Only if using Slack bot)
 
 1. Go to [api.slack.com/apps](https://api.slack.com/apps)
 2. Create a new app or select existing one
@@ -45,29 +56,80 @@ OPENAI_API_KEY=sk-your-openai-api-key
 
 ## Running the Project
 
-Start the bot:
+Start the server:
 ```bash
 npm start
 ```
 
-The bot will connect to Slack and listen for commands.
+### Running Modes
+
+- **API-only mode** (`IS_SLACK_BOT=false`): Runs only the HTTP API server
+- **Slack bot mode** (`IS_SLACK_BOT=true`): Runs both Slack bot and HTTP API server
+
+The HTTP API server always runs on the port specified by `PORT` (default: 3000).
 
 ## Usage
 
-In Slack, use the `/proposal` command:
+### HTTP API
+
+The server provides a REST API endpoint for generating proposals.
+
+**Endpoint:** `POST /api/proposal`
+
+**Request Body:**
+```json
+{
+  "name": "Manish",
+  "technology": "AI",
+  "tone": "professional",
+  "jobDescription": "Need an AI developer to build a chatbot"
+}
+```
+
+**Success Response (200):**
+```json
+{
+  "success": true,
+  "proposal": "Generated proposal text..."
+}
+```
+
+**Error Response (400):**
+```json
+{
+  "success": false,
+  "error": "Missing required fields: name, technology, tone, jobDescription"
+}
+```
+
+**Example using curl:**
+```bash
+curl -X POST http://localhost:3000/api/proposal \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Aayush",
+    "technology": "Python",
+    "tone": "friendly",
+    "jobDescription": "Looking for API integration developer"
+  }'
+```
+
+### Slack Bot (Optional)
+
+If `IS_SLACK_BOT=true`, you can use the `/proposal` command in Slack:
 
 ```
 /proposal <name> <technology> <tone> <job description>
 ```
 
-### Parameters
+**Parameters:**
 
 - **name**: Person's name (Manish, Aayush, Arun, Saurabh, Faisal, etc.)
 - **technology**: AI, Python, Frontend, Fullstack, Vue, React, Shopify, Backend, Devops
 - **tone**: professional, friendly, casual, etc.
 - **job description**: The job posting text
 
-### Examples
+**Examples:**
 
 ```
 /proposal Manish AI professional Need an AI developer to build a chatbot
@@ -87,7 +149,8 @@ src/
   ├── utils/
   │   ├── openai.js        # OpenAI client
   │   └── slack.js         # Slack app setup
-  ├── index.js             # Main entry point
+  ├── index.js             # Main entry point (handles Slack bot conditionally)
+  ├── server.js            # Express HTTP API server
   └── proposal.js          # Proposal generation logic
 ```
 
