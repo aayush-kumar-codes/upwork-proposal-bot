@@ -29,31 +29,58 @@ if (IS_SLACK_BOT) {
     await ack();
 
     try {
-      const parts = command.text.split(" ");
+      if (!command.text || !command.text.trim()) {
+        await respond("invalid format use /proposal name tech tone [clientName] job");
+        return;
+      }
+
+      // Split and filter out empty strings
+      const parts = command.text.trim().split(/\s+/).filter(part => part.length > 0);
+      
+      if (parts.length < 4) {
+        await respond("invalid format use /proposal name tech tone [clientName] job");
+        return;
+      }
+
       const rawName = parts[0];
       const rawTechnology = parts[1];
       const rawTone = parts[2];
-      const jobDescription = parts.slice(3).join(" ");
+      
+      // Check if clientName is provided (4th parameter, optional)
+      // If there are 5+ parts, treat 4th as clientName, rest as jobDescription
+      // If there are 4 parts, treat all after tone as jobDescription
+      let rawClientName = null;
+      let jobDescription;
+      
+      if (parts.length >= 5) {
+        rawClientName = parts[3];
+        jobDescription = parts.slice(4).join(" ");
+      } else {
+        jobDescription = parts.slice(3).join(" ");
+      }
 
       const name = normalizeName(rawName);
       const technology = normalizeTechnology(rawTechnology);
       const tone = normalizeTone(rawTone);
+      const clientName = rawClientName && rawClientName.trim() ? rawClientName.trim() : null;
 
-      if (!name || !technology || !tone) {
-        await respond("invalid format use /proposal name tech tone job");
+      if (!name || !technology || !tone || !jobDescription) {
+        await respond("invalid format use /proposal name tech tone [clientName] job");
         return;
       }
 
+      
       const proposal = await generateProposal({
         name,
         technology,
         tone,
-        jobDescription
+        jobDescription,
+        clientName
       });
 
       await respond(proposal);
     } catch (err) {
-      console.error(err);
+      console.error("Error in /proposal command:", err);
       await respond("something went wrong");
     }
   });

@@ -28,7 +28,8 @@ export async function generateProposal({
   name,
   technology,
   tone,
-  jobDescription
+  jobDescription,
+  clientName
 }) {
   // Analyze the job description to extract key skills and requirements
   const jobAnalysis = await analyzeJobDescription(jobDescription);
@@ -40,6 +41,9 @@ export async function generateProposal({
   const gitLink =
     gitLinks?.[technology]?.[name] ||
     "No portfolio available for this technology.";
+
+  // Determine greeting based on clientName
+  const greeting = clientName ? `hey ${clientName}` : "hey there";
 
   const prompt = `you are writing an upwork proposal for a developer.
 
@@ -67,11 +71,14 @@ my details:
 - tone: ${tone}
 - main technology: ${technology}
 - recent work github: ${gitLink}
+- client name (use in greeting if provided): ${clientName || "not provided"}
 - extra portfolio paragraph (optional, use only if it sounds natural and do not repeat the same info): ${portfolio}
+
+IMPORTANT: Start the proposal with exactly this greeting: "${greeting}"
 
 follow this style example, but adapt it fully to the job above and to my details:
 
-hey there
+${greeting}
 
 i'm ${name}, a developer who works a lot with ${technology.toLowerCase()} and related tools. i focus on writing clean code and keeping communication simple so clients always know what is going on.
 

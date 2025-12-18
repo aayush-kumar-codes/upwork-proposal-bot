@@ -26,7 +26,7 @@ const normalizeTone = (tone) => {
 
 app.post("/api/proposal", async (req, res) => {
   try {
-    const { name: rawName, technology: rawTechnology, tone: rawTone, jobDescription } = req.body || {};
+    const { name: rawName, technology: rawTechnology, tone: rawTone, jobDescription, clientName } = req.body || {};
 
     const name = normalizeName(rawName);
     const technology = normalizeTechnology(rawTechnology);
@@ -43,7 +43,8 @@ app.post("/api/proposal", async (req, res) => {
       name,
       technology,
       tone,
-      jobDescription
+      jobDescription,
+      clientName: clientName || null
     });
 
     return res.status(200).json({
