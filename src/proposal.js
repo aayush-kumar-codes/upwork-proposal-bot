@@ -3,16 +3,16 @@ import { portfolios } from "./data/portfolios.js";
 import { gitLinks } from "./data/gitLinks.js";
 
 async function analyzeJobDescription(jobDescription) {
-  const analysisPrompt = `Analyze the following job description and extract:
-1. Key skills/technologies mentioned (list them)
-2. Main requirements and problems to solve (summarize)
-3. Specific challenges or pain points (identify)
-4. Technical requirements (list them)
+  const analysisPrompt = `analyze the following job description and extract only the most important points:
+1) key skills and technologies mentioned
+2) main requirements and problems to solve
+3) specific challenges or pain points
+4) important technical details (apis, databases, frameworks, tools, architecture, etc.)
 
-Job Description:
+job description:
 ${jobDescription}
 
-Provide a concise analysis in a natural format that can be used to tailor a proposal. Focus on the most important skills and requirements.`;
+keep the analysis short and clear so it can be used to write a focused proposal. use simple language and avoid marketing buzzwords.`;
 
   const response = await openai.chat.completions.create({
     model: "gpt-4o",
@@ -41,31 +41,49 @@ export async function generateProposal({
     gitLinks?.[technology]?.[name] ||
     "No portfolio available for this technology.";
 
-  const prompt = `Make sure the proposal includes minor grammatical and punctuation mistakes to mimic human writing. Use normal, conversational English and ensure the proposal cannot be easily detected by AI text detection tools.
-don't use commas in proposal also write in small letters git URLs will be as it is exclude them.
-Write an Upwork proposal for the following job description: ${jobDescription} in 30 words as a developer.
-The tone should be ${tone} and the technology focused and it must use recent work from git ${gitLink} according to technology. after recent work paragraph it should take ${portfolio} paragraph according to technology.
+  const prompt = `you are writing an upwork proposal for a developer.
 
-IMPORTANT: Use the following job analysis to tailor the proposal:
+write in very simple, human language. use short sentences and clear grammar. avoid buzzwords and marketing language. keep it friendly and confident, not salesy. allow small natural mistakes so it does not feel like ai.
+
+use normal capitalization and punctuation. do not force everything to be lowercase. do not follow a strict word limit, but keep it short and to the point (around 120–200 words).
+
+use this structure exactly, with line breaks between sections:
+
+1) greeting
+2) short intro about who i am and what i do
+3) recent project paragraph using the git link
+4) extra portfolio paragraph (if provided)
+5) paragraph that connects my skills to this job and mentions main challenges
+6) short closing with call to action and signature
+
+job description:
+${jobDescription}
+
+job analysis (use this to match skills and challenges from the job):
 ${jobAnalysis}
 
-Based on this analysis, you MUST:
-1. Naturally mention the specific skills from the job description that match the developer's expertise (integrate them throughout, not as a separate list)
-2. Explain how we can solve the specific problem mentioned in the job description - address the main requirements and challenges identified in the analysis
-3. Connect the developer's experience and portfolio work to the specific needs of this project
-4. Show understanding of the technical requirements and how the developer's skills align with them
+my details:
+- name: ${name}
+- tone: ${tone}
+- main technology: ${technology}
+- recent work github: ${gitLink}
+- extra portfolio paragraph (optional, use only if it sounds natural and do not repeat the same info): ${portfolio}
 
-The proposal should be similar in style to the following example, but with modifications as specified:
+follow this style example, but adapt it fully to the job above and to my details:
 
-I am ${name}, a Sr. Full Stack Engineer with 10+ years of experience in building robust applications, including expertise in LLMs, Python, and Reactjs.
+hey there
 
-Recently I completed a project that involved integrating an AI-driven content generation tool with a site which you can view in my portfolio at ${gitLink}. This project required a deep understanding of both development and AI integration similar to the requirements of your project. The solution I delivered not only improved user engagement but also streamlined the content creation process, showcasing the potential of combining AI with web technologies.
+i'm ${name}, a developer who works a lot with ${technology.toLowerCase()} and related tools. i focus on writing clean code and keeping communication simple so clients always know what is going on.
+
+recently i worked on a project where i integrated different services and improved data flow between systems. you can check it here: ${gitLink}. i handled api integrations, error handling and made sure everything stayed stable in production.
 
 ${portfolio}
 
-Let me know when we can connect to discuss the project.
+based on your job, i can help with the main tasks like matching your api and data needs, handling edge cases, and making sure the system is easy to maintain. i pay attention to clear structure, good error handling and simple workflows that match real business needs.
 
-Best regards,
+if this sounds good, let's chat and see how i can help with your project.
+
+best regards,
 ${name}
 `;
 
