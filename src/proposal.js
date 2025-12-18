@@ -232,10 +232,10 @@ use this structure exactly, with line breaks between sections:
 
 1) greeting
 2) short intro that starts with the client's main technologies from the job description and mentions my experience with them
-3) recent project paragraph using the git link
-4) extra portfolio paragraph (if provided)
-5) paragraph that connects my skills to this job using the same tech stack (no need to mention challenges)
-6) short closing with call to action and signature
+3) recent project paragraph using the git link that briefly mentions 1–3 main technologies from the job's tech stack (use the main tech stack from the job description); keep it short and simple
+4) extra portfolio + fit paragraph (if provided): 1–3 short sentences in a single paragraph that (a) describe another relevant project and (b) clearly say why my skills and this stack fit this specific job
+5) on the next line write exactly this sentence (do not change any words): "please review my portfolio: <portfolio link from my details>."
+6) closing with call to action and signature using this exact text and line breaks (only replace the name): "Please let me know when we can proceed further.\nBest regards\n{name}"
 
 job description:
 ${jobDescription}
@@ -250,21 +250,26 @@ my details:
 - main tech stack from job description: ${techStackString}
 - recent work github: ${gitLink}
 - client name (use in greeting if provided): ${clientName || "not provided"}
-- extra portfolio paragraph (optional, use only if it sounds natural and do not repeat the same info): ${portfolio}
+- extra portfolio details (contains a project description and a portfolio link; if you use it, do NOT copy it verbatim and do NOT keep the original 'you can also review my portfolio' sentence; instead always use the fixed sentence below for the portfolio line): ${portfolio}
 
 IMPORTANT: Start the proposal with exactly this greeting: "${greeting}"
 
-follow this style example, but adapt it fully to the job above and to my details. you can change the phrasing as long as it stays simple and human:
+follow this style example, but adapt it fully to the job above and to my details. you can change the phrasing as long as it stays simple and human, and you should NOT copy these exact sentences:
 
 ${greeting}
 
 i'm ${name}, a ${roleLabel} dev. i work with ${techStackString} in real projects.
 
-recently i built a feature using the same kind of stack. you can see it here: ${gitLink}. it handles real-time updates and edge cases in production.
+then write 1–2 short, natural sentences about a recent project that uses some of ${techStackString} and include this link: ${gitLink}. keep the wording casual and vary it from proposal to proposal.
 
-${portfolio}
+for the extra portfolio + fit paragraph, write 2–3 short sentences that focus only on this client and their job: briefly say how i would approach solving their main problem using the key technologies from the job description (use ${techStackString} in a short, natural way), and explain in simple words why my skills are a good fit for this work. do NOT describe another past project here.
 
-i think i can help with this job because the tools you use are close to what i use every day. i like to keep things simple, ship working code, and communicate clearly while we build.
+on the next line, write exactly this sentence (do not change any words), replacing only the link with the portfolio link from my details: "please review my portfolio: https://example.com.".
+
+after that, write the closing exactly like this, only replacing the name:
+Please let me know when we can proceed further.
+Best regards
+${name}
 
 if this sounds good, happy to chat more about the details.
 
