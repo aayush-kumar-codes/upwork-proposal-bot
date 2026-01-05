@@ -202,6 +202,26 @@ export async function generateProposal({
     gitLinks?.[finalTechnology]?.[name] ||
     "No portfolio available for this technology.";
 
+  // Extract portfolio link from portfolio text if it exists
+  const extractPortfolioLink = (text) => {
+    if (!text || typeof text !== "string") return null;
+    // Match URLs (http, https, or www)
+    const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/gi;
+    const matches = text.match(urlRegex);
+    if (matches && matches.length > 0) {
+      // Find the portfolio link (usually tinyurl or similar, not github)
+      const portfolioLink = matches.find(url => 
+        url.includes("tinyurl") || 
+        url.includes("portfolio") || 
+        (!url.includes("github.com") && !url.includes("git"))
+      );
+      return portfolioLink || matches[matches.length - 1]; // Return last URL if no portfolio-specific one found
+    }
+    return null;
+  };
+
+  const portfolioLink = extractPortfolioLink(portfolio) || "https://example.com";
+
   // Determine greeting based on clientName
   const greeting = clientName ? `hey ${clientName}` : "hey there";
 
@@ -213,34 +233,44 @@ export async function generateProposal({
       ? cleanedTechStack.join(", ")
       : finalTechnology;
 
-  const prompt = `you are writing an upwork proposal for a developer.
+  const prompt = `you are writing an upwork proposal for a developer. write it like a real human would write it not like ai.
 
-write in very simple, human language. use short sentences and clear grammar. avoid buzzwords and marketing language. keep it friendly and confident, not salesy. allow small natural mistakes so it does not feel like ai.
+CRITICAL RULES:
+- write everything in lowercase letters EXCEPT:
+  * "I" when used as a pronoun (like "I am" "I have" "I will" "I can")
+  * technical terms should have RANDOM capitalization - some with first letter capital (like "React" "Python" "Next.js") and some all lowercase (like "node" "docker" "fastapi") to make it look natural and human-written
+- DO NOT use any commas anywhere in the proposal
+- use very simple words like "I have" "I am" "I will" "I can" "I work" "I did" etc (always capitalize "I")
+- write like you're texting a friend about work keep it super casual and natural
+- allow small grammar mistakes and natural flow that makes it feel human-written not ai-generated
+- do not sound polished or perfect make it feel authentic
 
 very important:
-- do not sound like a cover letter
-- do not use phrases like "some of the key technologies you're using"
-- do not use phrases like "from your tech stack"
-- do not use phrases like "based on your job"
-- do not say "i'm a fullstack developer" unless it feels very natural
-- do not list technologies in a long formal sentence. keep it short and casual.
-- write like you would talk to a friend about a project.
+- do not sound like a cover letter or formal proposal
+- do NOT use phrases like "for your project" "for this project" "i'd" "i would" 
+- do NOT use phrases like "some of the key technologies you're using"
+- do NOT use phrases like "from your tech stack" or "based on your job"
+- write directly about the work and skills without referencing "your project" explicitly
+- use simple direct language that matches the job post style
+- write like you would talk to a friend about a project
 
-use normal capitalization and punctuation. do not follow a strict word limit, but keep it short and to the point (around 120–200 words).
+use this structure exactly with line breaks between sections:
 
-use this structure exactly, with line breaks between sections:
-
-1) greeting
-2) short intro that starts with the client's main technologies from the job description and mentions my experience with them
-3) recent project paragraph using the git link that briefly mentions 1–3 main technologies from the job's tech stack (use the main tech stack from the job description); keep it short and simple
-4) extra portfolio + fit paragraph (if provided): 1–3 short sentences in a single paragraph that (a) describe another relevant project and (b) clearly say why my skills and this stack fit this specific job
-5) on the next line write exactly this sentence (do not change any words): "please review my portfolio: <portfolio link from my details>."
-6) closing with call to action and signature using this exact text and line breaks (only replace the name): "Please let me know when we can proceed further.\nBest regards\n{name}"
+1) greeting (use exactly: "${greeting}")
+2) short intro: "I am ${name} a ${roleLabel} dev I work with [skills from ${techStackString}] [write something that makes sense according to the job post - like what you do with these skills or how you use them, keep it short and natural]" 
+   - MUST use "I am" not "i'm" (always capitalize "I")
+   - list skills WITHOUT commas (just space separated)
+   - skills should have RANDOM capitalization: some like "React" "Python" "Next.js" and some like "node" "docker" "fastapi" to look natural
+   - DO NOT use "in real projects" - instead write something contextually relevant to the job description (e.g. "building voice apps" "creating apis" "developing web apps" etc)
+3) recent project section: start with "recently" and write about 2 lines (2 sentences) describing a recent project that uses technologies from the job. include the git link ${gitLink}. make it detailed and related to what the job needs. write it naturally like you're explaining what you did.
+4) fit paragraph: 2-3 short sentences that directly address the job requirements using simple words like "I have" "I can" "I will" (always capitalize "I"). write it similar to the job post style. do NOT say "for your project" or "i'd" - just write directly about the work and how your skills match.
+5) portfolio line: "please review my portfolio: ${portfolioLink}"
+6) closing: "Please let me know when we can proceed further.\nBest regards\n${name}"
 
 job description:
 ${jobDescription}
 
-job analysis (use this to match skills and challenges from the job, but do not mention that you are using this analysis or that you read the job carefully):
+job analysis (use this to understand what they need but write naturally about it):
 ${jobAnalysis}
 
 my details:
@@ -250,38 +280,40 @@ my details:
 - main tech stack from job description: ${techStackString}
 - recent work github: ${gitLink}
 - client name (use in greeting if provided): ${clientName || "not provided"}
-- extra portfolio details (contains a project description and a portfolio link; if you use it, do NOT copy it verbatim and do NOT keep the original 'you can also review my portfolio' sentence; instead always use the fixed sentence below for the portfolio line): ${portfolio}
+- portfolio link: ${portfolioLink}
+- extra portfolio details (use for context but do not copy verbatim): ${portfolio}
 
-IMPORTANT: Start the proposal with exactly this greeting: "${greeting}"
+IMPORTANT FORMATTING:
+- all text lowercase except "I" (always capitalize "I" as pronoun) and technical terms with RANDOM capitalization (some like "React" "Python" some like "node" "docker" "fastapi")
+- no commas anywhere
+- the "recently" section should be about 2 lines with good detail about the project
+- use simple direct words like "I have" "I am" "I will" "I can" (always capitalize "I")
+- write naturally like human text not ai text
+- match the style of the job post
+- in the intro line after listing skills write something contextually relevant to the job (NOT "in real projects") - like "building voice apps" "creating apis" "developing web platforms" etc based on what the job is about
 
-follow this style example, but adapt it fully to the job above and to my details. you can change the phrasing as long as it stays simple and human, and you should NOT copy these exact sentences:
+example structure (adapt to the actual job):
 
 ${greeting}
 
-i'm ${name}, a ${roleLabel} dev. i work with ${techStackString} in real projects.
+I am ${name} a ${roleLabel} dev I work with React Python node docker Next.js fastapi [something relevant to job like building web apps or creating apis or developing voice systems etc]
 
-then write 1–2 short, natural sentences about a recent project that uses some of ${techStackString} and include this link: ${gitLink}. keep the wording casual and vary it from proposal to proposal.
+recently i [describe what you did in detail about 2 lines]. [second sentence with more details about the project]. you can check it out here: ${gitLink}
 
-for the extra portfolio + fit paragraph, write 2–3 short sentences that focus only on this client and their job: briefly say how i would approach solving their main problem using the key technologies from the job description (use ${techStackString} in a short, natural way), and explain in simple words why my skills are a good fit for this work. do NOT describe another past project here.
+[I have experience with relevant skills]. [I can help with specific job needs]. [simple statement about fit using "I have" or "I will"].
 
-on the next line, write exactly this sentence (do not change any words), replacing only the link with the portfolio link from my details: "please review my portfolio: https://example.com.".
+please review my portfolio: ${portfolioLink}
 
-after that, write the closing exactly like this, only replacing the name:
 Please let me know when we can proceed further.
 Best regards
-${name}
-
-if this sounds good, happy to chat more about the details.
-
-thanks,
 ${name}
 `;
 
   const response = await openai.chat.completions.create({
     model: "gpt-4o",
     messages: [{ role: "user", content: prompt }],
-    max_tokens: 500,
-    temperature: 0.85
+    max_tokens: 600,
+    temperature: 0.9
   });
 
   return response.choices[0].message.content;
