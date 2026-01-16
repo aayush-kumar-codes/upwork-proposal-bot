@@ -8,6 +8,7 @@ export const portfolios = {
     Kishan: "I have developed Shopify applications with AI-driven features, integrating advanced technologies like NestJS to create intelligent e-commerce solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I created a Nuxt.js project that demonstrates advanced AI integration and frontend development techniques. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I developed a file analysis tool showcasing my skills in data processing and AI-driven applications. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I have worked on multiple AI-driven projects, including advanced AI applications and intelligent systems. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I built an event management platform with intelligent features, demonstrating my ability to integrate AI technologies into practical solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72.",
     Atul: "I worked on a similar project to automate recruitment tasks, where I deployed an AI agent to production using advanced RAG/prompt engineering techniques. You can see this agent at https://github.com/nodeexcel/TalentAI. I also have experience in optimizing prompts for AI-generated content, which I believe would be highly relevant for this role. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/497tpfv3."
   },
@@ -20,6 +21,7 @@ export const portfolios = {
     Kishan: "I have extensive experience in Python-based backend development, particularly with NestJS and creating scalable web applications. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I developed Nuxt.js applications with robust Python backend integrations, demonstrating full-stack development capabilities. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I created file processing tools and analysis applications using Python, showcasing my ability to develop efficient and practical solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I have extensive experience in Python-based backend development, creating scalable and efficient applications. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I built an event management platform using Python, demonstrating my skills in backend development and system design. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72.",
     Atul: "Recently, I completed an API integration project between a client's platform and a third-party service, ensuring smooth data synchronization and automation https://github.com/nodeexcel/Booking-Engine. I also took over an ongoing project for a client, quickly grasping the essence of the work and delivering a successful handover. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/497tpfv3."
   },
@@ -32,6 +34,7 @@ export const portfolios = {
     Kishan: "I developed frontend applications for Shopify using Vite, creating responsive and performant user interfaces. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I created a Nuxt.js project that demonstrates advanced frontend development techniques, with a focus on creating intuitive user experiences. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I developed frontend interfaces for file analysis tools, showcasing my skills in creating user-friendly and functional web applications. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I have created frontend interfaces for various applications, showcasing my design and development skills. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I built a frontend for an event management platform, demonstrating my ability to create intuitive and responsive user interfaces. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72."
   },
   Fullstack: {
@@ -43,6 +46,7 @@ export const portfolios = {
     Kishan: "I created full-stack Shopify applications using NestJS and Vite, showcasing my ability to develop end-to-end web solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I developed a full-stack application using Nuxt.js, demonstrating my capabilities in creating comprehensive web solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I built full-stack file analysis applications, showcasing my ability to develop complete web solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I built full-stack applications that streamlined business processes, showcasing my ability to develop complete web solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I created a full-stack event management platform, demonstrating my end-to-end development skills. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72."
   },
   Vue: {
@@ -54,6 +58,7 @@ export const portfolios = {
     Kishan: "I have experience in creating Vue.js applications with a focus on performance and user experience. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I implemented a Nuxt.js application that demonstrates advanced Vue.js development techniques. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I developed Vue.js interfaces for file analysis tools, showcasing my frontend development capabilities. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I have experience in creating Vue.js applications with a focus on performance and user experience. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I created Vue.js interfaces for an event management platform, demonstrating my skills in modern web development. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72."
   },
   React: {
@@ -65,6 +70,7 @@ export const portfolios = {
     Kishan: "I have experience in creating React applications for Shopify with a focus on performance and user experience. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I developed React applications with advanced state management and user interface techniques. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I created React interfaces for file analysis tools, demonstrating my frontend development capabilities. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I have experience in creating React applications with a focus on performance and user experience. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I built React interfaces for an event management platform, showcasing my modern web development skills. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72."
   },
   Shopify: {
@@ -76,6 +82,7 @@ export const portfolios = {
     Kishan: "I created Shopify applications using Vite and NestJS, demonstrating my expertise in e-commerce platform development. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I developed Shopify-integrated applications with advanced frontend techniques. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I have experience in creating Shopify applications with a focus on user experience and functionality. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I have experience in creating Shopify applications with a focus on user experience and functionality. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I built Shopify-integrated solutions for event management and sales platforms. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72."
   },
   Backend: {
@@ -87,6 +94,7 @@ export const portfolios = {
     Kishan: "I have extensive experience in backend development using NestJS and creating scalable server-side solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I developed backend systems with Nuxt.js and advanced API integration techniques. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I created backend systems for file processing and analysis applications. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I have extensive experience in backend development, creating scalable server-side solutions. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I built backend systems for event management platforms with robust API design. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72."
   },
   Devops: {
@@ -98,6 +106,7 @@ export const portfolios = {
     Kishan: "I have expertise in DevOps practices, particularly in setting up CI/CD pipelines for Shopify and NestJS applications. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/44th67rr.",
     Rahul: "I implemented DevOps strategies for Nuxt.js applications, focusing on efficient deployment and scaling. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/ycm7fyk3.",
     Gopal: "I developed DevOps solutions for file processing and analysis applications. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/vda7kksj.",
+    Vikas: "I have expertise in DevOps practices, particularly in setting up CI/CD pipelines and ensuring scalable infrastructure. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/3bmw84xx.",
     Yuvraj: "I created DevOps strategies for event management platforms, ensuring robust and scalable infrastructure. You can also review my portfolio for a broader view of my work and experience: https://tinyurl.com/56jwfx72."
   }
 };

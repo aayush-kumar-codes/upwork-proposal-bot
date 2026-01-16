@@ -222,8 +222,8 @@ export async function generateProposal({
 
   const portfolioLink = extractPortfolioLink(portfolio) || "https://example.com";
 
-  // Determine greeting based on clientName
-  const greeting = clientName ? `hey ${clientName}` : "hey there";
+  // Hardcoded greeting
+  const greeting = "hey there";
 
   // Build a concise tech stack string from the job description; fall back to finalTechnology if empty
   const rawTechStack = Array.isArray(techStack) ? techStack : [];

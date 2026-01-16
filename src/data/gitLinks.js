@@ -7,9 +7,10 @@ export const gitLinks = {
     Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
     Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
-    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Gopal: "https://github.com/gopal-prakash-codes/TalkWebAI",
     Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
-    Atul: "https://github.com/nodeexcel/TalentAI"
+    Atul: "https://github.com/nodeexcel/TalentAI",
+    Vikas:"https://github.com/vikasexcel/TalkWebAI"
   },
   Python: {
     Manish: "https://github.com/Manishiitg/recruitai",
@@ -19,9 +20,10 @@ export const gitLinks = {
     Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
     Kishan: "https://github.com/kishan-kumar-codes/nestjs-shopify",
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
-    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Gopal: "https://github.com/gopal-prakash-codes/ServeAI",
     Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
-    Atul: "https://github.com/nodeexcel/Booking-Engine"
+    Atul: "https://github.com/nodeexcel/Booking-Engine",
+    Vikas:"https://github.com/vikasexcel/ServeAI"
   },
   Frontend: {
     Manish: "https://github.com/Manishiitg/recruitai",
@@ -31,9 +33,10 @@ export const gitLinks = {
     Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
     Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
-    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Gopal: "https://github.com/gopal-prakash-codes/TeamFlow",
     Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
-    Atul: "https://github.com/nodeexcel/DomainCore"
+    Atul: "https://github.com/nodeexcel/DomainCore",
+    Vikas:"https://github.com/vikasexcel/TeamFlow"
   },
   Fullstack: {
     Manish: "https://github.com/Manishiitg/recruitai",
@@ -43,9 +46,10 @@ export const gitLinks = {
     Mahima: "https://github.com/mahima-khera-codes/DjangoMart",
     Kishan: "https://github.com/kishan-kumar-codes/Shopify-Vite",
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
-    Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
+    Gopal: "https://github.com/gopal-prakash-codes/ShotPerfect",
     Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
-    Atul: "https://github.com/nodeexcel/BankGraphQL"
+    Atul: "https://github.com/nodeexcel/BankGraphQL",
+    Vikas:"https://github.com/vikasexcel/ShotPerfect"
   },
   Vue: {
     Manish: "https://github.com/Manishiitg/recruitai",
@@ -57,7 +61,8 @@ export const gitLinks = {
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
     Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
     Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
-    Atul: "https://github.com/nodeexcel/AI-Hand-Detection"
+    Atul: "https://github.com/nodeexcel/AI-Hand-Detection",
+    Vikas:"https://github.com/vikasexcel/ShotPerfect"
   },
   React: {
     Manish: "https://github.com/Manishiitg/recruitai",
@@ -69,7 +74,8 @@ export const gitLinks = {
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
     Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
     Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
-    Atul: "https://github.com/nodeexcel/BankGraphQL"
+    Atul: "https://github.com/nodeexcel/BankGraphQL",
+    Vikas:"https://github.com/vikasexcel/TeamFlow"
   },
   Shopify: {
     Manish: "https://github.com/Manishiitg/recruitai",
@@ -81,7 +87,8 @@ export const gitLinks = {
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
     Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
     Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
-    Atul: "https://github.com/nodeexcel/BankGraphQL"
+    Atul: "https://github.com/nodeexcel/BankGraphQL",
+    Vikas:"https://github.com/vikasexcel/TalkWebAI"
   },
   Backend: {
     Manish: "https://github.com/Manishiitg/recruitai",
@@ -93,7 +100,8 @@ export const gitLinks = {
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
     Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
     Yuvraj: "https://github.com/yuvraj-singh-codes/BankGraphQL",
-    Atul: "https://github.com/nodeexcel/BankGraphQL"
+    Atul: "https://github.com/nodeexcel/BankGraphQL",
+    Vikas:"https://github.com/vikasexcel/TalkWebAI"
   },
   Devops: {
     Manish: "https://github.com/aayush-kumar-codes/TerraformOPs",
@@ -105,6 +113,7 @@ export const gitLinks = {
     Rahul: "https://github.com/vue-excel/hungrydemocracynuxt-",
     Gopal: "https://github.com/gopal-prakash-codes/FileProwler",
     Yuvraj: "https://github.com/yuvraj-singh-codes/event-management",
-    Atul: "https://github.com/nodeexcel/BankGraphQL"
+    Atul: "https://github.com/nodeexcel/BankGraphQL",
+    Vikas:"https://github.com/vikasexcel/TalkWebAI"
   }
 };
